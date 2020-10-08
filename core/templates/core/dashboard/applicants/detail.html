@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+
+
+{% block content %}
+<style>
+    .card-columns {
+        column-count: 3;
+    }
+</style>
+<!--Main layout-->
+<main class="pt-5 mx-lg-5">
+    <div class="container-fluid mt-5">
+
+
+        {% bootstrap_messages %}
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+
+            <!--Grid column-->
+            <div class="col-md-10 mb-4">
+
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card content-->
+                    <div class="card-body">
+
+                        <dl class="row">
+                            <dt class="col-sm-3">Full Name</dt>
+                            <dd class="col-sm-9">{{application.get_full_name}}</dd>
+
+                            <dt class="col-sm-3">Gender</dt>
+                            <dd class="col-sm-9">
+                                {{application.gender}}
+                            </dd>
+
+                            <dt class="col-sm-3">Address</dt>
+                            <dd class="col-sm-9">{{application.address}}</dd>
+
+                            <dt class="col-sm-3">Email</dt>
+                            <dd class="col-sm-9">{{application.email}}</dd>
+
+                            <dt class="col-sm-3">Phone</dt>
+                            <dd class="col-sm-9">{{application.phone}}</dd>
+
+                            <dt class="col-sm-3">Nationality</dt>
+                            <dd class="col-sm-9">{{application.nationality}}</dd>
+
+                            <dt class="col-sm-3">State of Origin</dt>
+                            <dd class="col-sm-9">{{application.state_of_origin}}</dd>
+
+                            <dt class="col-sm-3">Local Government of Origin</dt>
+                            <dd class="col-sm-9">{{application.local_government}}</dd>
+
+                            <dt class="col-sm-3">Program</dt>
+                            <dd class="col-sm-9">{{application.program}}</dd>
+
+                            <dt class="col-sm-3">Degree</dt>
+                            <dd class="col-sm-9">{{application.degree}}</dd>
+                            <div class="col-sm-3 offset-sm-9">
+                                <form method="POST" class="form">
+                                    {% csrf_token %}
+                                    {% bootstrap_form form %}
+                                    {% buttons %}
+                                    <button type="submit" class="btn btn-success btn-sm">
+                                        Update Status
+                                    </button>
+                                    {% endbuttons %}
+                                </form>
+                            </div>
+
+
+                        </dl>
+                    </div>
+
+                </div>
+                <!--/.Card-->
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+    </div>
+</main>
+<!--Main layout-->
+{% endblock content %}

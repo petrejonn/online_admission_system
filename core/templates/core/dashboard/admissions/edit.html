@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+
+
+{% block content %}
+<!--Main layout-->
+<main class="pt-5 mx-lg-5">
+    <div class="container-fluid mt-5">
+
+        <!-- Heading -->
+        <div class="card mb-4 wow fadeIn">
+
+            <!--Card content-->
+            <div class="card-body d-sm-flex justify-content-between">
+
+                <h4 class="mb-2 mb-sm-0 pt-1">
+                    <a href="{% url 'core:course_list' %}" target="_blank">Admissions</a>
+                    <span>/</span>
+                    <span>Edit</span>
+                </h4>
+
+
+
+            </div>
+
+        </div>
+        <!-- Heading -->
+        {% bootstrap_messages %}
+        <div class="row wow fadeIn">
+
+            <!--Grid column-->
+            <div class="col-md-9 mb-4">
+
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card content-->
+                    <div class="card-body">
+
+                        <form method="POST" class="form">
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+                            {% buttons %}
+                            <button type="submit" class="btn btn-primary">
+                                Submit
+                            </button>
+                            {% endbuttons %}
+                        </form>
+
+                    </div>
+
+                </div>
+                <!--/.Card-->
+
+            </div>
+            <!--Grid column-->
+        </div>
+    </div>
+</main>
+<!--Main layout-->
+{% endblock content %}

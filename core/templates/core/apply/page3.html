@@ -1,0 +1,28 @@
+{% extends 'core/public_base.html' %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+<section class="contact-page spad pt-0">
+    <div class="container">
+        <div class="section-title text-center">
+            <h3>WAEC DETAILS</h3>
+        </div>
+        {% bootstrap_messages %}
+
+        <form method="POST" class="form">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-6 offset-lg-2">
+                    {% bootstrap_form form %}
+                    {% buttons %}
+                    <button type="submit" class="site-btn text-white">
+                        Next
+                    </button>
+                    {% endbuttons %}
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock content %}

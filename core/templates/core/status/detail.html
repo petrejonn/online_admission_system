@@ -1,0 +1,31 @@
+{% extends 'core/public_base.html' %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+<section class="contact-page spad pt-0">
+    <div class="container">
+        <div class="section-title text-center">
+            <h3>ADMISSION STATUS</h3>
+        </div>
+        {% ifequal application.status "Review" %}
+        <div class="alert alert-warning" role="alert">
+            Your pplication is still under review please check again while we review your application
+        </div>
+        {% endifequal %}
+        {% ifequal application.status "Granted" %}
+        <div class="alert alert-success" role="alert">
+            Contratulations you have been granted admission to study {{application.program}}. Proceed to the university
+            to
+            collect you admission letter.
+        </div>
+        {% endifequal %}
+        {% ifequal application.status "Denied" %}
+        <div class="alert alert-danger" role="alert">
+            We are to imform you that your applicant was denied because to did not meet our minimum requirements.
+        </div>
+        {% endifequal %}
+
+    </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+
+
+{% block content %}
+<style>
+    .card-columns {
+        column-count: 3;
+    }
+</style>
+<!--Main layout-->
+<main class="pt-5 mx-lg-5">
+    <div class="container-fluid mt-5">
+
+        <!-- Heading -->
+        <div class="card mb-4 wow fadeIn">
+
+            <!--Card content-->
+            <div class="card-body d-sm-flex justify-content-between">
+
+                <h4 class="mb-2 mb-sm-0 pt-1">
+                    <span>Admission Period</span>
+                </h4>
+
+                <a href="{% url 'core:admission_create' %}" class="btn btn-primary">
+                    New Period
+                </a>
+
+            </div>
+
+        </div>
+        <!-- Heading -->
+        {% bootstrap_messages %}
+        <div class="row wow fadeIn">
+
+            <!--Grid column-->
+            <div class="col-md-10 mb-4">
+
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card content-->
+                    <div class="card-body">
+                        <div class="card-columns">
+
+                            {% for admission_period in admission_period_list %}
+                            <div class="card mb-4">
+
+                                <!--Card content-->
+                                <div class="card-body">
+
+                                    <!-- List group links -->
+                                    <div class="list-group list-group-flush">
+                                        <h6 class="list-group-item list-group-item-action waves-effect">
+                                            {{admission_period.title}}
+                                        </h6>
+                                        <p class="list-group-item list-group-item-action waves-effect">Start:
+                                            <span
+                                                class="badge badge-primary badge-pill pull-right">{{admission_period.start_date}}
+                                                <i class="fas fa-arrow-down ml-1"></i>
+                                            </span>
+                                        </p>
+                                        <p class="list-group-item list-group-item-action waves-effect">End:
+                                            <span
+                                                class="badge badge-danger badge-pill pull-right">{{admission_period.end_date}}</span>
+                                        </p>
+
+
+                                    </div>
+                                    <!-- List group links -->
+                                    <!--Call to action-->
+                                    <div class="pt-4 d-flex">
+                                        <a class="btn btn-sm btn-outline-info d-inline-block"
+                                            href="{% url 'core:admission_edit' admission_period.id %}" target="_blank"
+                                            role="button">Edit
+                                        </a>
+                                        <a class="btn btn-sm btn-outline-danger"
+                                            href="{% url 'core:admission_delete' admission_period.id %}" target="_blank"
+                                            role="button">
+                                            Delete
+
+                                        </a>
+                                    </div>
+                                    <!--/.Call to action-->
+
+
+                                </div>
+
+                            </div>
+                            <!--/.Card-->
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!--/.Card-->
+
+            </div>
+            <!--Grid column-->
+        </div>
+    </div>
+</main>
+<!--Main layout-->
+{% endblock content %}
